@@ -13,3 +13,10 @@ mybatis-plus:
   global-config:
     db-config:
       id-type: auto
+
+# jwt配置
+jwt:
+  header: "Authorization"   # token 返回头部
+  tokenPrefix: "Bearer "    # token 前缀
+  secret: "yax1n9"          # 签名私钥
+  expireTIme: 604800000         # token 有效时间（ms）
