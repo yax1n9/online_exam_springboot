@@ -9,6 +9,7 @@ import com.yaxing.domain.Student;
 import com.yaxing.service.ILoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.DigestUtils;
 
 /**
  * @author yx
@@ -25,16 +26,16 @@ public class LoginServiceImpl implements ILoginService {
     @Override
     public Admin adminLogin(Login login) {
         LambdaQueryWrapper<Admin> lqm = new LambdaQueryWrapper<>();
-        lqm.eq(login.getUsername() != null && login.getPassword() != null, Admin::getUsername, login.getUsername());
-        lqm.eq(login.getUsername() != null && login.getPassword() != null, Admin::getPassword, login.getPassword());
+        lqm.eq(login.getUsername() != null && login.getPassword() != null, Admin::getUsername, login.getUsername())
+                .eq(login.getUsername() != null && login.getPassword() != null, Admin::getPassword, DigestUtils.md5DigestAsHex(login.getPassword().getBytes()));
         return adminDao.selectOne(lqm);
     }
 
     @Override
     public Student studentLogin(Login login) {
         LambdaQueryWrapper<Student> lqm = new LambdaQueryWrapper<>();
-        lqm.eq(login.getUsername() != null && login.getPassword() != null, Student::getUsername, login.getUsername());
-        lqm.eq(login.getUsername() != null && login.getPassword() != null, Student::getPassword, login.getPassword());
+        lqm.eq(login.getUsername() != null && login.getPassword() != null, Student::getUsername, login.getUsername())
+                .eq(login.getUsername() != null && login.getPassword() != null, Student::getPassword, DigestUtils.md5DigestAsHex(login.getPassword().getBytes()));
         return studentDao.selectOne(lqm);
     }
 }

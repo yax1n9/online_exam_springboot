@@ -3,6 +3,7 @@ package com.yaxing.config;
 import com.auth0.jwt.exceptions.AlgorithmMismatchException;
 import com.auth0.jwt.exceptions.SignatureVerificationException;
 import com.auth0.jwt.exceptions.TokenExpiredException;
+import com.auth0.jwt.interfaces.DecodedJWT;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.yaxing.controller.utils.Result;
 import com.yaxing.controller.utils.ResultCode;
@@ -16,17 +17,28 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * @author yx
  * @date 2022/12/7
- * jwt 拦截器行为
+ * jwt 拦截器
  */
 public class JWTInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         Result result = null;
         // 从 request 的 header 中获得 token 值
-        String token = request.getHeader("Authorization").replace("Bearer ", "");
         try {
-            JWTUtil.verify(token);
-            return true; // 如果验证过程没有出异常，放行
+            String token = request.getHeader("Authorization").replace("Bearer ", "");
+            String path = request.getServletPath();
+            DecodedJWT decodedJWT = JWTUtil.verify(token);
+            String role = decodedJWT.getClaim("role").asString();
+            if (role.equals("0")) {
+                // 不是管理员，不能访问部分接口
+                // /subject
+                String reg = "(^/subject.*)|(^/login/test/token)";
+                if (path.matches(reg)) {
+                    result = new Result(ResultCode.TOKEN_NO_AUTHORIZATION_CODE, false, ResultMessage.TOKEN_NO_AUTH_MSG);
+                }
+            } else {
+                return true; // 如果验证过程没有出异常，放行
+            }
         } catch (SignatureVerificationException e) {
             e.printStackTrace();
             result = new Result(ResultCode.TOKEN_INVALID_CODE, false, ResultMessage.TOKEN_SIGNATURE_INVALID_MSG);

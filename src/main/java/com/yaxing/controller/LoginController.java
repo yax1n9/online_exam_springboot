@@ -37,13 +37,14 @@ public class LoginController {
             Map<String, String> resMap = new HashMap<>();
             Admin admin = loginService.adminLogin(login);
             if (admin != null) {
+                // 生成 token
                 payload.put("id", admin.getAdminId() + "");
                 payload.put("name", admin.getName());
                 payload.put("username", admin.getUsername());
                 payload.put("role", admin.getRole() + "");
                 token = JWTUtil.createToken(payload);
                 resMap.put("token", token);
-                return new Result(ResultCode.LOGIN_SUCCESS_CODE, true, ResultMessage.LOGIN_SUCCESS_MSG, resMap);
+                return new Result(ResultCode.REQUEST_SUCCESS_CODE, true, ResultMessage.LOGIN_SUCCESS_MSG, resMap);
             }
             Student student = loginService.studentLogin(login);
             if (student != null) {
@@ -53,7 +54,7 @@ public class LoginController {
                 payload.put("role", student.getRole() + "");
                 token = JWTUtil.createToken(payload);
                 resMap.put("token", token);
-                return new Result(ResultCode.LOGIN_SUCCESS_CODE, true, ResultMessage.LOGIN_SUCCESS_MSG, resMap);
+                return new Result(ResultCode.REQUEST_SUCCESS_CODE, true, ResultMessage.LOGIN_SUCCESS_MSG, resMap);
             }
         } catch (Exception e) {
             return new Result(ResultCode.LOGIN_FAILED_CODE, false, ResultMessage.LOGIN_FAILED_MSG);
@@ -63,8 +64,8 @@ public class LoginController {
 
     @PostMapping("/test/token")
     public String testToken(HttpServletRequest request) {
-        String token = request.getHeader("Authorization").replace("Bearer ", "");
-        JWTUtil.verify(token);
-        return token;
+        // String token = request.getHeader("Authorization").replace("Bearer ", "");
+        // JWTUtil.verify(token);
+        return "test";
     }
 }

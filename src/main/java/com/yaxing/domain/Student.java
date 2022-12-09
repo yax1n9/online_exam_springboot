@@ -1,5 +1,7 @@
 package com.yaxing.domain;
 
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 
 /**
@@ -8,6 +10,8 @@ import lombok.Data;
  */
 @Data
 public class Student {
+    @TableId
+    @TableField("student_id")
     private Integer studentId;
     private String username;
     private String password;
