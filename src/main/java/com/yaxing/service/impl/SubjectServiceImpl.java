@@ -25,7 +25,7 @@ public class SubjectServiceImpl extends ServiceImpl<SubjectDao, Subject> impleme
         IPage<Subject> page = new Page<>(currentPage, pageSize);
         LambdaQueryWrapper<Subject> lqm = new LambdaQueryWrapper<>();
         lqm.like(subject.getName() != null, Subject::getName, subject.getName())
-                .eq(Subject::getIs_delete, 0);
+                .eq(Subject::getIsDelete, 0);
         return subjectDao.selectPage(page, lqm);
     }
 
@@ -33,7 +33,7 @@ public class SubjectServiceImpl extends ServiceImpl<SubjectDao, Subject> impleme
     public boolean deleteById(Integer subjectId) {
         Subject subject = new Subject();
         subject.setSubjectId(subjectId);
-        subject.setIs_delete(1);
+        subject.setIsDelete(1);
         return subjectDao.updateById(subject) > 0;
     }
 }

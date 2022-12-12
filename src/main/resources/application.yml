@@ -23,3 +23,7 @@ jwt:
   tokenPrefix: "Bearer "    # token 前缀
   secret: "yax1n9"          # 签名私钥
   expireTIme: 604800000         # token 有效时间（ms）
+
+# 文件存储路径
+file:
+  path: C:\projects\IdeaProjects\online_exam\files\

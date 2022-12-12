@@ -37,4 +37,11 @@ public class ResultMessage {
     public static String SELECT_FAILED_MSG = "查询失败！";
     public static String SELECT_SUCCESS_MSG = "查询成功！";
 
+    // 文件
+    public static String FILE_UPLOAD_SUCCESS_MSG = "上传成功！";
+    public static String FILE_UPLOAD_FAILED_MSG = "上传失败！";
+
+    public static String FILE_DOWNLOAD_SUCCESS_MSG = "下载成功！";
+    public static String FILE_DOWNLOAD_FAILED_MSG = "下载失败！";
+
 }

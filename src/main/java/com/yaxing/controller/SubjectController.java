@@ -1,5 +1,6 @@
 package com.yaxing.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.yaxing.controller.utils.Result;
 import com.yaxing.controller.utils.ResultCode;
@@ -40,9 +41,6 @@ public class SubjectController {
 
     @PutMapping
     public Result modifySubjectById(@RequestBody Subject subject) {
-        System.out.println("--------------------------------------------");
-        System.out.println(subject.getSubjectId() + subject.getName());
-        System.out.println("--------------------------------------------");
         boolean b = subjectService.updateById(subject);
         return new Result(b ? ResultCode.REQUEST_SUCCESS_CODE : ResultCode.MODIFY_FAILED_CODE,
                 b,
@@ -51,8 +49,19 @@ public class SubjectController {
 
     @GetMapping
     public Result selectAllSubject() {
-        List<Subject> subjects = subjectService.list();
+        LambdaQueryWrapper<Subject> lqm = new LambdaQueryWrapper<>();
+        lqm.eq(Subject::getSubjectId, 0);
+        List<Subject> subjects = subjectService.list(lqm);
         return new Result(ResultCode.REQUEST_SUCCESS_CODE, true, ResultMessage.SELECT_SUCCESS_MSG, subjects);
+    }
+
+    @GetMapping("/{subjectId}")
+    public Result selectById(@PathVariable Integer subjectId) {
+        LambdaQueryWrapper<Subject> lqm = new LambdaQueryWrapper<>();
+        lqm.eq(Subject::getSubjectId, subjectId)
+                .eq(Subject::getIsDelete, 0);
+        Subject subject = subjectService.getOne(lqm);
+        return new Result(ResultCode.REQUEST_SUCCESS_CODE, true, ResultMessage.SELECT_SUCCESS_MSG, subject);
     }
 
     @GetMapping("/{currentPage}/{pageSize}")

@@ -33,4 +33,9 @@ public class ResultCode {
 
     // 查询失败
     public static int SELECT_FAILED_CODE = 504;
+
+    // 文件
+    public static int FILE_UPLOAD_FAILED_CODE = 601;
+    public static int FILE_DOWNLOAD_FAILED_CODE = 602;
+
 }

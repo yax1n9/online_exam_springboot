@@ -14,5 +14,6 @@ public class Subject {
     @TableField("subject_id")
     private Integer subjectId;
     private String name;
-    private int is_delete;
+    @TableField("is_delete")
+    private int isDelete;
 }
