@@ -2,6 +2,7 @@ package com.yaxing.domain;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableLogic;
 import lombok.Data;
 
 /**
@@ -10,8 +11,7 @@ import lombok.Data;
  */
 @Data
 public class Student {
-    @TableId
-    @TableField("student_id")
+    @TableId("student_id")
     private Integer studentId;
     private String username;
     private String password;
@@ -19,6 +19,8 @@ public class Student {
     private String name;
     private String tel;
     private int gender;
+    @TableLogic
+    @TableField("is_delete")
     private int isDelete;
     private int role;
 }

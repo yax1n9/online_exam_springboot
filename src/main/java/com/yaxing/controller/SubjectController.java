@@ -33,7 +33,7 @@ public class SubjectController {
 
     @DeleteMapping("/{subjectId}")
     public Result removeSubjectById(@PathVariable Integer subjectId) {
-        boolean b = subjectService.deleteById(subjectId);
+        boolean b = subjectService.removeById(subjectId);
         return new Result(b ? ResultCode.REQUEST_SUCCESS_CODE : ResultCode.REMOVE_FAILED_CODE,
                 b,
                 b ? ResultMessage.REMOVE_SUCCESS_MSG : ResultMessage.REMOVE_FAILED_MSG);
@@ -49,18 +49,13 @@ public class SubjectController {
 
     @GetMapping
     public Result selectAllSubject() {
-        LambdaQueryWrapper<Subject> lqm = new LambdaQueryWrapper<>();
-        lqm.eq(Subject::getSubjectId, 0);
-        List<Subject> subjects = subjectService.list(lqm);
+        List<Subject> subjects = subjectService.list();
         return new Result(ResultCode.REQUEST_SUCCESS_CODE, true, ResultMessage.SELECT_SUCCESS_MSG, subjects);
     }
 
     @GetMapping("/{subjectId}")
     public Result selectById(@PathVariable Integer subjectId) {
-        LambdaQueryWrapper<Subject> lqm = new LambdaQueryWrapper<>();
-        lqm.eq(Subject::getSubjectId, subjectId)
-                .eq(Subject::getIsDelete, 0);
-        Subject subject = subjectService.getOne(lqm);
+        Subject subject = subjectService.getById(subjectId);
         return new Result(ResultCode.REQUEST_SUCCESS_CODE, true, ResultMessage.SELECT_SUCCESS_MSG, subject);
     }
 

@@ -10,7 +10,9 @@ import com.yaxing.service.IExamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author yx
@@ -26,14 +28,18 @@ public class ExamController {
     @PostMapping
     public Result addExam(@RequestBody Exam exam) {
         boolean save = examService.save(exam);
+        System.out.println(exam.getExamId());
+        Map<String, Integer> map = new HashMap<>();
+        map.put("examId", exam.getExamId());
         return new Result(save ? ResultCode.REQUEST_SUCCESS_CODE : ResultCode.INSERT_FAILED_CODE,
                 save,
-                save ? ResultMessage.INSERT_SUCCESS_MSG : ResultMessage.INSERT_FAILED_MSG);
+                save ? ResultMessage.INSERT_SUCCESS_MSG : ResultMessage.INSERT_FAILED_MSG,
+                map);
     }
 
     @DeleteMapping("/{examId}")
     public Result removeById(@PathVariable Integer examId) {
-        boolean b = examService.deleteById(examId);
+        boolean b = examService.removeById(examId);
         return new Result(b ? ResultCode.REQUEST_SUCCESS_CODE : ResultCode.REMOVE_FAILED_CODE,
                 b,
                 b ? ResultMessage.REMOVE_SUCCESS_MSG : ResultMessage.REMOVE_FAILED_MSG);
@@ -49,18 +55,13 @@ public class ExamController {
 
     @GetMapping("/{examId}")
     public Result selectById(@PathVariable Integer examId) {
-        LambdaQueryWrapper<Exam> lqm = new LambdaQueryWrapper<>();
-        lqm.eq(Exam::getExamId, examId)
-                .eq(Exam::getIsDelete, 0);
-        Exam exam = examService.getOne(lqm);
+        Exam exam = examService.getById(examId);
         return new Result(ResultCode.REQUEST_SUCCESS_CODE, true, ResultMessage.SELECT_SUCCESS_MSG, exam);
     }
 
     @GetMapping
     public Result selectList() {
-        LambdaQueryWrapper<Exam> lqm = new LambdaQueryWrapper<>();
-        lqm.eq(Exam::getIsDelete, 0);
-        List<Exam> exams = examService.list(lqm);
+        List<Exam> exams = examService.list();
         return new Result(ResultCode.REQUEST_SUCCESS_CODE, true, ResultMessage.SELECT_SUCCESS_MSG, exams);
     }
 

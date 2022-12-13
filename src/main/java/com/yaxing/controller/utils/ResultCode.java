@@ -38,4 +38,8 @@ public class ResultCode {
     public static int FILE_UPLOAD_FAILED_CODE = 601;
     public static int FILE_DOWNLOAD_FAILED_CODE = 602;
 
+    // 考试时间
+    public static int EXAM_TIME_OVER_CODE = 701;
+    public static int EXAM_TIME_NOT_BEGIN_CODE = 702;
+
 }

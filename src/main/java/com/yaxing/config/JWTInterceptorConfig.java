@@ -13,7 +13,8 @@ public class JWTInterceptorConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new JWTInterceptor())
-                .addPathPatterns("/login/test/token", "/subject/**")
+                .addPathPatterns("/login/test/token",
+                        "/subject/**")
                 .excludePathPatterns("/login", "/register");
     }
 }

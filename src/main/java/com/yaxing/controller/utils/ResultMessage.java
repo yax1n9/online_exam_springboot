@@ -44,4 +44,10 @@ public class ResultMessage {
     public static String FILE_DOWNLOAD_SUCCESS_MSG = "下载成功！";
     public static String FILE_DOWNLOAD_FAILED_MSG = "下载失败！";
 
+    // 考试时间
+    public static String EXAM_TIME_OVER_MSG = "考试结束！";
+    public static String EXAM_TIME_NOT_BEGIN_MSG = "考试未开始！";
+    public static String EXAM_TIME_LATE_MSG = "考试已经开始，不能进入！";
+    public static String EXAM_TIME_PASS_MSG = "开始考试！";
+
 }

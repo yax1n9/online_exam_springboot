@@ -18,12 +18,4 @@ public interface ISubjectService extends IService<Subject> {
      * @return 查询到的数据
      */
     IPage<Subject> getPageByCondition(Integer currentPage, Integer pageSize, Subject subject);
-
-    /**
-     * 按id修改
-     *
-     * @param subjectId id
-     * @return 删除结果
-     */
-    boolean deleteById(Integer subjectId);
 }

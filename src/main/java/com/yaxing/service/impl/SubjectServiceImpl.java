@@ -24,16 +24,7 @@ public class SubjectServiceImpl extends ServiceImpl<SubjectDao, Subject> impleme
     public IPage<Subject> getPageByCondition(Integer currentPage, Integer pageSize, Subject subject) {
         IPage<Subject> page = new Page<>(currentPage, pageSize);
         LambdaQueryWrapper<Subject> lqm = new LambdaQueryWrapper<>();
-        lqm.like(subject.getName() != null, Subject::getName, subject.getName())
-                .eq(Subject::getIsDelete, 0);
+        lqm.like(subject.getName() != null, Subject::getName, subject.getName());
         return subjectDao.selectPage(page, lqm);
-    }
-
-    @Override
-    public boolean deleteById(Integer subjectId) {
-        Subject subject = new Subject();
-        subject.setSubjectId(subjectId);
-        subject.setIsDelete(1);
-        return subjectDao.updateById(subject) > 0;
     }
 }
