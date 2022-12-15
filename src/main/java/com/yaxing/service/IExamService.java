@@ -22,7 +22,7 @@ public interface IExamService extends IService<Exam> {
     IPage<Exam> selectPageByCondition(int currentPage, int pageSize, Exam exam);
 
     /**
-     * 判断考试时间
+     * 判断是否处于考试时间区间
      *
      * @param examId 试卷id
      * @return 时间结果

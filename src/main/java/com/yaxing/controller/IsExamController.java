@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
  * @date 2022/12/13
  */
 @RestController
-@RequestMapping("/isController")
+@RequestMapping("/isExam")
 public class IsExamController {
 
     @Autowired
