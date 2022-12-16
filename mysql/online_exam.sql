@@ -43,7 +43,7 @@ CREATE TABLE `admin` (
 
 LOCK TABLES `admin` WRITE;
 /*!40000 ALTER TABLE `admin` DISABLE KEYS */;
-INSERT INTO `admin` VALUES (3,'teacher',1,NULL,'8d788385431273d11e8b43bb78f3aa41',0,NULL,0,NULL);
+INSERT INTO `admin` VALUES (3,'teacher',1,NULL,'8d788385431273d11e8b43bb78f3aa41',0,'马老师',0,NULL);
 /*!40000 ALTER TABLE `admin` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -59,16 +59,18 @@ CREATE TABLE `exam` (
   `title` varchar(50) NOT NULL,
   `cover` varchar(255) DEFAULT 'exam_cover_default.png',
   `subject_id` int NOT NULL,
+  `subject_name` varchar(50) DEFAULT NULL,
   `start_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `end_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `latest_enter_time` int DEFAULT '15' COMMENT '最晚的进入时间（min）',
   `shortest_submit_time` int NOT NULL DEFAULT '15' COMMENT '最短提交时间（min)',
+  `latest_enter_time` int DEFAULT '15' COMMENT '最晚的进入时间（min）',
   `pass_line` int NOT NULL DEFAULT '60' COMMENT '及格线，百分制',
+  `is_begin` int DEFAULT '0' COMMENT '是否开始考试。 0：未开始； 1：正在进行；',
   `is_end` int NOT NULL DEFAULT '0' COMMENT '0：未结束；1：已结束',
   `is_delete` int NOT NULL DEFAULT '0' COMMENT '0：未删除；1：已删除',
   PRIMARY KEY (`exam_id`),
   UNIQUE KEY `exam_examId_uindex` (`exam_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='试卷信息表';
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='试卷信息表';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -77,7 +79,7 @@ CREATE TABLE `exam` (
 
 LOCK TABLES `exam` WRITE;
 /*!40000 ALTER TABLE `exam` DISABLE KEYS */;
-INSERT INTO `exam` VALUES (1,'计算机网络期末考试（A）','exam_cover_default.png',1,'2022-12-05 02:20:23','2022-12-31 02:20:23',15,15,60,0,0),(2,'计算机网络期末考试（B）','exam_cover_default.png',1,'2022-12-31 02:22:46','2022-12-31 04:22:46',15,15,60,0,0),(3,'web前端','exam_cover_default.png',2,'2022-12-12 09:39:13','2022-12-12 09:39:13',15,15,60,0,0),(4,'test','exam_cover_default.png',4,'2022-12-12 09:54:28','2022-12-12 09:54:28',15,15,60,0,1),(5,'test222','exam_cover_default.png',3,'2022-12-12 09:58:05','2022-12-12 09:58:05',15,15,60,0,1),(6,'test333','exam_cover_default.png',3,'2022-12-13 01:30:04','2022-12-13 01:30:04',15,15,60,0,0),(7,'test444','exam_cover_default.png',3,'2022-12-13 01:34:27','2022-12-13 01:34:27',15,15,60,0,0),(8,'test555','exam_cover_default.png',3,'2022-12-13 01:37:01','2022-12-13 01:37:01',15,15,60,0,0),(9,'test666','exam_cover_default.png',3,'2022-12-13 02:40:11','2022-12-13 02:40:11',15,15,60,0,0),(10,'test77','exam_cover_default.png',3,'2022-12-13 06:42:39','2022-12-20 02:42:39',15,15,60,0,0);
+INSERT INTO `exam` VALUES (1,'计算机网络期末考试（A）','exam_cover_default.png',1,'计算机网络','2022-12-05 02:20:23','2022-12-31 02:20:23',15,15,60,1,0,0),(2,'计算机网络期末考试（B）','exam_cover_default.png',1,'计算机网络','2022-12-31 02:22:46','2022-12-31 04:22:46',15,15,60,0,0,0),(3,'web前端','exam_cover_default.png',2,'web前端','2022-12-12 09:39:13','2022-12-12 09:39:13',15,15,60,0,1,0),(4,'test','exam_cover_default.png',2,'web前端','2022-12-12 09:54:28','2022-12-12 09:54:28',15,15,60,0,1,1),(5,'test222','exam_cover_default.png',1,'计算机网络','2022-12-12 09:58:05','2022-12-12 09:58:05',15,15,60,0,1,1),(6,'test333','exam_cover_default.png',1,'计算机网络','2022-12-13 01:30:04','2022-12-13 01:30:04',15,15,60,0,1,0),(7,'test444','exam_cover_default.png',1,'计算机网络','2022-12-13 01:34:27','2022-12-13 01:34:27',15,15,60,0,1,0),(8,'test555','exam_cover_default.png',1,'计算机网络','2022-12-13 01:37:01','2022-12-13 01:37:01',15,15,60,0,1,0),(9,'test666','exam_cover_default.png',1,'计算机网络','2022-12-13 02:40:11','2022-12-13 02:40:11',15,15,60,0,1,0),(10,'test77','exam_cover_default.png',1,'计算机网络','2022-12-13 06:42:39','2022-12-20 02:42:39',15,15,60,1,0,0),(11,'长期考试1','exam_cover_default.png',1,'计算机网络','2022-12-16 02:39:08','2023-12-16 02:39:11',15,15,60,0,1,0),(12,'长期考试2','exam_cover_default.png',1,'计算机网络','2022-12-16 02:39:41','2023-12-16 02:39:45',15,15,60,1,0,0);
 /*!40000 ALTER TABLE `exam` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -209,4 +211,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-12-14 14:53:31
+-- Dump completed on 2022-12-16 18:03:00

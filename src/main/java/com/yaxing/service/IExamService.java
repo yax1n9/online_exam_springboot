@@ -28,4 +28,9 @@ public interface IExamService extends IService<Exam> {
      * @return 时间结果
      */
     Result judgeTime(Integer examId);
+
+    /**
+     * 新增
+     */
+    boolean create(Exam exam);
 }

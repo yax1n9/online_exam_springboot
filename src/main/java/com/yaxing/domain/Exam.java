@@ -19,6 +19,8 @@ public class Exam {
     private String cover;
     @TableField("subject_id")
     private Integer subjectId;
+    @TableField("subject_name")
+    private String subjectName;
     @TableField("start_time")
     private Timestamp startTime;
     @TableField("end_time")
@@ -34,4 +36,6 @@ public class Exam {
     private int isDelete;
     @TableField("is_end")
     private int isEnd;
+    @TableField("is_begin")
+    private int isBegin;
 }

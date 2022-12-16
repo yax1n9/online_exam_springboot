@@ -15,6 +15,7 @@ import java.util.List;
  * @author yx
  * @date 2022/12/13
  */
+@CrossOrigin
 @RestController
 @RequestMapping("/singleChooses")
 public class SingleChooseController {

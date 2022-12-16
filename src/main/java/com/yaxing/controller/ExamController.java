@@ -1,6 +1,5 @@
 package com.yaxing.controller;
 
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.yaxing.controller.utils.Result;
 import com.yaxing.controller.utils.ResultCode;
@@ -18,6 +17,7 @@ import java.util.Map;
  * @author yx
  * @date 2022/12/12
  */
+@CrossOrigin
 @RestController
 @RequestMapping("/exams")
 public class ExamController {
@@ -46,6 +46,7 @@ public class ExamController {
 
     @PutMapping
     public Result modifyById(@RequestBody Exam exam) {
+        System.out.println(exam.getExamId());
         boolean b = examService.updateById(exam);
         return new Result(b ? ResultCode.REQUEST_SUCCESS_CODE : ResultCode.MODIFY_FAILED_CODE,
                 b,

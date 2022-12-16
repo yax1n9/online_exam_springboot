@@ -11,6 +11,6 @@ import org.apache.ibatis.annotations.Update;
  */
 @Mapper
 public interface ExamDao extends BaseMapper<Exam> {
-    @Update("update exam set is_end=1 where exam_id = #{examId};")
-    void updateIsEnd(Integer examId);
+    @Update("update exam set is_end=#{isEnd}, is_begin=#{isBegin} where exam_id = #{examId};")
+    void updateStatus(Integer examId, int isEnd, int isBegin);
 }
