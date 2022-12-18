@@ -18,6 +18,7 @@ import java.util.UUID;
  * @author yx
  * @date 2022/12/12
  */
+@CrossOrigin
 @RestController
 @RequestMapping("/files")
 public class FileController {
@@ -45,7 +46,7 @@ public class FileController {
             file.transferTo(new File(BasePath + fileName));
         } catch (IOException e) {
             e.printStackTrace();
-            return new Result(ResultCode.FILE_UPLOAD_FAILED_CODE, true, ResultMessage.FILE_UPLOAD_FAILED_MSG, fileName);
+            return new Result(ResultCode.FILE_UPLOAD_FAILED_CODE, true, ResultMessage.FILE_UPLOAD_FAILED_MSG);
         }
 
         // 返回文件名

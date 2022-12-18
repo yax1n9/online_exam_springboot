@@ -1,6 +1,5 @@
 package com.yaxing.controller;
 
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.yaxing.controller.utils.Result;
 import com.yaxing.controller.utils.ResultCode;
@@ -16,8 +15,9 @@ import java.util.List;
  * @author yx
  * @date 2022/12/9
  */
+@CrossOrigin
 @RestController
-@RequestMapping("/subject")
+@RequestMapping("/subjects")
 public class SubjectController {
 
     @Autowired

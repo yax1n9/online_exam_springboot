@@ -27,7 +27,7 @@ public class ExamController {
 
     @PostMapping
     public Result createExam(@RequestBody Exam exam) {
-        boolean save = examService.save(exam);
+        boolean save = examService.create(exam);
         Map<String, Integer> map = new HashMap<>();
         map.put("examId", exam.getExamId());
         return new Result(save ? ResultCode.REQUEST_SUCCESS_CODE : ResultCode.INSERT_FAILED_CODE,
