@@ -70,7 +70,7 @@ CREATE TABLE `exam` (
   `is_delete` int NOT NULL DEFAULT '0' COMMENT '0：未删除；1：已删除',
   PRIMARY KEY (`exam_id`),
   UNIQUE KEY `exam_examId_uindex` (`exam_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='试卷信息表';
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='试卷信息表';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -79,7 +79,7 @@ CREATE TABLE `exam` (
 
 LOCK TABLES `exam` WRITE;
 /*!40000 ALTER TABLE `exam` DISABLE KEYS */;
-INSERT INTO `exam` VALUES (1,'计算机网络期末考试（A）','exam_cover_default.png',1,'计算机网络','2022-12-05 02:20:23','2022-12-31 02:20:23',15,15,60,1,0,0),(2,'计算机网络期末考试（B）','exam_cover_default.png',1,'计算机网络','2022-12-31 02:22:46','2022-12-31 04:22:46',15,15,60,0,0,0),(3,'web前端','exam_cover_default.png',2,'web前端','2022-12-12 09:39:13','2022-12-12 09:39:13',15,15,60,0,1,0),(4,'test','exam_cover_default.png',2,'web前端','2022-12-12 09:54:28','2022-12-12 09:54:28',15,15,60,0,1,1),(5,'test222','exam_cover_default.png',1,'计算机网络','2022-12-12 09:58:05','2022-12-12 09:58:05',15,15,60,0,1,1),(6,'test333','exam_cover_default.png',1,'计算机网络','2022-12-13 01:30:04','2022-12-13 01:30:04',15,15,60,0,1,0),(7,'test444','exam_cover_default.png',1,'计算机网络','2022-12-13 01:34:27','2022-12-13 01:34:27',15,15,60,0,1,0),(8,'test555','exam_cover_default.png',1,'计算机网络','2022-12-13 01:37:01','2022-12-13 01:37:01',15,15,60,0,1,0),(9,'test666','exam_cover_default.png',1,'计算机网络','2022-12-13 02:40:11','2022-12-13 02:40:11',15,15,60,0,1,0),(10,'test77','exam_cover_default.png',1,'计算机网络','2022-12-13 06:42:39','2022-12-20 02:42:39',15,15,60,1,0,0),(11,'长期考试1','exam_cover_default.png',1,'计算机网络','2022-12-16 02:39:08','2023-12-16 02:39:11',15,15,60,0,1,0),(12,'长期考试2','exam_cover_default.png',1,'计算机网络','2022-12-16 02:39:41','2023-12-16 02:39:45',15,15,60,1,0,0);
+INSERT INTO `exam` VALUES (1,'计算机网络期末考试（A）','exam_cover_default.png',1,'计算机网络','2022-12-05 02:20:23','2022-12-31 02:20:23',15,15,60,1,0,0),(2,'计算机网络期末考试（B）','exam_cover_default.png',1,'计算机网络','2022-12-31 02:22:46','2022-12-31 04:22:46',15,15,60,0,0,0),(3,'web前端','exam_cover_default.png',2,'web前端','2022-12-12 09:39:13','2022-12-12 09:39:13',15,15,60,0,1,0),(4,'test','exam_cover_default.png',2,'web前端','2022-12-12 09:54:28','2022-12-12 09:54:28',15,15,60,0,1,1),(5,'test222','exam_cover_default.png',1,'计算机网络','2022-12-12 09:58:05','2022-12-12 09:58:05',15,15,60,0,1,1),(6,'test333','exam_cover_default.png',1,'计算机网络','2022-12-13 01:30:04','2022-12-13 01:30:04',15,15,60,0,1,0),(7,'test444','exam_cover_default.png',1,'计算机网络','2022-12-13 01:34:27','2022-12-13 01:34:27',15,15,60,0,1,0),(8,'test555','exam_cover_default.png',1,'计算机网络','2022-12-13 01:37:01','2022-12-13 01:37:01',15,15,60,0,1,0),(9,'test666','exam_cover_default.png',1,'计算机网络','2022-12-13 02:40:11','2022-12-13 02:40:11',15,15,60,0,1,0),(10,'test77','exam_cover_default.png',1,'计算机网络','2022-12-13 06:42:39','2022-12-20 02:42:39',15,15,60,1,0,0),(11,'长期考试1','exam_cover_default.png',1,'计算机网络','2022-12-16 02:39:08','2023-12-16 02:39:11',15,15,60,0,1,0),(12,'长期考试2','exam_cover_default.png',1,'计算机网络','2022-12-16 02:39:41','2023-12-16 02:39:45',15,15,60,1,0,0),(13,'test000','exam_cover_default.png',3,'测试','2022-12-19 06:55:06','2022-12-19 06:55:06',15,15,60,0,1,0),(14,'321','exam_cover_default.png',3,'测试','2022-12-18 16:00:00','2022-12-30 16:00:00',15,15,60,1,0,0),(15,'1','exam_cover_default.png',3,'测试','2022-12-18 16:00:00','2022-12-19 16:00:00',15,15,60,1,0,0),(16,'1','exam_cover_default.png',1,'计算机网络','2022-12-19 16:00:00','2022-12-30 16:00:00',15,15,60,0,0,0),(17,'测试标题1','exam_cover_default.png',3,'测试','2022-12-18 16:00:00','2022-12-23 16:00:00',15,15,60,1,0,0),(18,'1','exam_cover_default.png',3,'测试','2022-12-18 16:00:00','2022-12-20 16:00:00',15,15,60,1,0,0),(19,'2','exam_cover_default.png',3,'测试','2022-12-21 16:00:00','2022-12-23 16:00:00',15,15,60,0,0,0),(20,'1','exam_cover_default.png',3,'测试','2022-12-18 16:00:00','2022-12-20 16:00:00',15,15,60,1,0,0),(21,'5','exam_cover_default.png',3,'测试','2022-12-18 16:00:00','2022-12-30 16:00:00',15,15,60,0,0,0);
 /*!40000 ALTER TABLE `exam` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -97,7 +97,7 @@ CREATE TABLE `exam_question` (
   `exam_id` int NOT NULL,
   `is_delete` int NOT NULL DEFAULT '0' COMMENT '0：未删除；1：已删除',
   PRIMARY KEY (`exam_question_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='试卷对应试题表';
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='试卷对应试题表';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -106,7 +106,7 @@ CREATE TABLE `exam_question` (
 
 LOCK TABLES `exam_question` WRITE;
 /*!40000 ALTER TABLE `exam_question` DISABLE KEYS */;
-INSERT INTO `exam_question` VALUES (1,1,3,1,0),(2,2,3,1,0),(3,3,3,1,0),(4,4,3,1,0),(5,5,3,1,0),(6,6,3,1,0),(7,7,3,1,0),(8,8,3,1,0),(9,9,3,1,0),(10,10,3,1,0),(11,10,3,2,1);
+INSERT INTO `exam_question` VALUES (1,1,3,1,0),(2,2,3,1,0),(3,3,3,1,0),(4,4,3,1,0),(5,5,3,1,0),(6,6,3,1,0),(7,7,3,1,0),(8,8,3,1,0),(9,9,3,1,0),(10,10,3,1,0),(11,10,3,2,1),(12,1,3,13,0),(13,2,3,13,0),(14,3,3,13,0),(15,1,3,14,0),(16,2,3,14,0),(17,7,3,14,0),(18,6,3,14,0),(19,1,3,15,0),(20,1,3,18,0),(21,17,3,20,0),(22,1,3,21,0),(23,18,3,21,0);
 /*!40000 ALTER TABLE `exam_question` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -120,17 +120,18 @@ DROP TABLE IF EXISTS `single_choose`;
 CREATE TABLE `single_choose` (
   `question_id` int NOT NULL AUTO_INCREMENT,
   `subject_id` int NOT NULL DEFAULT '1',
+  `subject_name` varchar(50) DEFAULT NULL,
   `title` varchar(255) NOT NULL,
   `answer_a` varchar(255) NOT NULL,
   `answer_b` varchar(255) NOT NULL,
   `answer_c` varchar(255) DEFAULT NULL,
   `answer_d` varchar(255) DEFAULT NULL,
-  `real_answer` int NOT NULL DEFAULT '1' COMMENT '1: A;2: B;3: C;4: D',
+  `real_answer` int NOT NULL DEFAULT '1' COMMENT '0: A;1: B;2: C;3: D',
   `is_delete` int NOT NULL DEFAULT '0' COMMENT '0：未删除；1：已删除',
   `type` int NOT NULL DEFAULT '0' COMMENT '默认0：选择题',
   PRIMARY KEY (`question_id`),
   UNIQUE KEY `singleChoose_questionId_uindex` (`question_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='单选题表';
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='单选题表';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -139,7 +140,7 @@ CREATE TABLE `single_choose` (
 
 LOCK TABLES `single_choose` WRITE;
 /*!40000 ALTER TABLE `single_choose` DISABLE KEYS */;
-INSERT INTO `single_choose` VALUES (1,1,'DNS 服务器和DHCP服务器的作用是（）','将IP地址翻译为计算机名，为客户机分配IP地址','将IP地址翻译为计算机名、解析计算机的MAC地址','将IP地址翻译为计算机名、解析计算机的MAC地址','将计算机名翻译为IP地址、解析计算机的MAC地址',3,0,0),(2,1,'HTTP协议通常使用什么协议进行传输（）','ARP','DHCP','UDP','TCP',4,0,0),(3,1,'查看DNS缓存记录的命令（）','ipconfig/displaydns','nslookup','ipconfig/release','ipconfig/flushdns',1,0,0),(4,1,'DHCP(        )报文的目的IP地址为255.255.255.255','DhcpDisover','DhcpOffer','DhcpAck','DhcpNack',1,0,0),(5,1,'下列地址中，（  ）不是DHCP服务器分配的IP地址','196.254.109.100','169.254.12.42','69.254.48.45','96.254.54.15',2,0,0),(6,1,'DHCP通常可以为客户端自动配置哪些网络参数（）','IP，掩码，网关，DNS','IP，掩码，域名，SMTP','网关，掩码，浏览器，FTP','IP，网关，DNS，服务器',1,0,0),(7,1,'DNS服务器在名称解析过程中正确的查询顺序为（）','本地缓存记录→区域记录→转发域名服务器→根域名服务器','区域记录→本地缓存记录→转发域名服务器→根域名服务器','本地缓存记录→区域记录→根域名服务器→转发域名服务器','区域记录→本地缓存记录→根域名服务器→转发域名服务器',1,0,0),(8,1,'在TCP/IP协议中，序号小于（  ）的端口称为熟知端口(well-known port)。','1024','64','256','128',1,0,0),(9,1,'在Internet上用TCP/IP播放视频，想用传输层的最快协议，以减少时延，要使用（ ）','UDP协议的低开销特性','UDP协议的低开销特性','TCP协议的低开销特性','TCP协议的高开销特性',1,0,0),(10,1,'在TCP协议中采用（ ）来区分不同的应用进程','端口号','IP地址','协议类型','MAC地址',1,0,0),(11,3,'单选题','answerA','B','AnswerC',NULL,1,1,0);
+INSERT INTO `single_choose` VALUES (1,1,'计算机网络','DNS 服务器和DHCP服务器的作用是（）','将IP地址翻译为计算机名，为客户机分配IP地址','将IP地址翻译为计算机名、解析计算机的MAC地址','将IP地址翻译为计算机名、解析计算机的MAC地址','将计算机名翻译为IP地址、解析计算机的MAC地址',2,0,0),(2,1,'计算机网络','HTTP协议通常使用什么协议进行传输（）','ARP','DHCP','UDP','TCP',3,0,0),(3,1,'计算机网络','查看DNS缓存记录的命令（）','ipconfig/displaydns','nslookup','ipconfig/release','ipconfig/flushdns',0,0,0),(4,1,'计算机网络','DHCP(        )报文的目的IP地址为255.255.255.255','DhcpDisover','DhcpOffer','DhcpAck','DhcpNack',0,0,0),(5,1,'计算机网络','下列地址中，（  ）不是DHCP服务器分配的IP地址','196.254.109.100','169.254.12.42','69.254.48.45','96.254.54.15',1,0,0),(6,1,'计算机网络','DHCP通常可以为客户端自动配置哪些网络参数（）','IP，掩码，网关，DNS','IP，掩码，域名，SMTP','网关，掩码，浏览器，FTP','IP，网关，DNS，服务器',0,0,0),(7,1,'计算机网络','DNS服务器在名称解析过程中正确的查询顺序为（）','本地缓存记录→区域记录→转发域名服务器→根域名服务器','区域记录→本地缓存记录→转发域名服务器→根域名服务器','本地缓存记录→区域记录→根域名服务器→转发域名服务器','区域记录→本地缓存记录→根域名服务器→转发域名服务器',0,0,0),(8,1,'计算机网络','在TCP/IP协议中，序号小于（  ）的端口称为熟知端口(well-known port)。','1024','64','256','128',0,0,0),(9,1,'计算机网络','在Internet上用TCP/IP播放视频，想用传输层的最快协议，以减少时延，要使用（ ）','UDP协议的低开销特性','UDP协议的低开销特性','TCP协议的低开销特性','TCP协议的高开销特性',0,0,0),(10,1,'计算机网络','在TCP协议中采用（ ）来区分不同的应用进程','端口号','IP地址','协议类型','MAC地址',0,0,0),(11,3,'测试','单选题','answerA','B','AnswerC',NULL,1,1,0),(12,1,'计算机网络','<p>1</p>','<p>1</p>','<p>1</p>',NULL,NULL,0,0,0),(13,3,'测试','<p>测试题干</p>','<p>测试选项A</p>','<p>测试选项B</p>',NULL,NULL,0,0,0),(14,3,'测试','<p>题干1</p>','<p>选项A</p>','<p>选项B</p>',NULL,NULL,0,0,0),(15,3,'测试','<p>2</p>','<p>2</p>','<p>2</p>',NULL,NULL,1,0,0),(16,3,'测试','<p>3</p>','<p>3</p>','<p>3</p>',NULL,NULL,1,0,0),(17,3,'测试','<p>4</p>','<p>4</p>','<p>4</p>',NULL,NULL,1,0,0),(18,3,'测试','<p>5</p>','<p>5</p>','<p>5</p>',NULL,NULL,1,0,0);
 /*!40000 ALTER TABLE `single_choose` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -189,7 +190,7 @@ CREATE TABLE `subject` (
   PRIMARY KEY (`subject_id`),
   UNIQUE KEY `subject_name_uindex` (`name`),
   UNIQUE KEY `subject_subjectId_uindex` (`subject_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='科目分类表';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='科目分类表';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -198,7 +199,7 @@ CREATE TABLE `subject` (
 
 LOCK TABLES `subject` WRITE;
 /*!40000 ALTER TABLE `subject` DISABLE KEYS */;
-INSERT INTO `subject` VALUES (1,'计算机网络',0),(2,'web前端',1);
+INSERT INTO `subject` VALUES (1,'计算机网络',0),(2,'web前端',1),(3,'测试',0);
 /*!40000 ALTER TABLE `subject` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -211,4 +212,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-12-16 18:03:00
+-- Dump completed on 2022-12-19 17:59:02
