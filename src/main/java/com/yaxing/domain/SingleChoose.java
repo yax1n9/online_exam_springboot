@@ -15,6 +15,8 @@ public class SingleChoose {
     private Integer questionId;
     @TableField("subject_id")
     private Integer subjectId;
+    @TableField("subject_name")
+    private String subjectName;
     private String title;
     @TableField("answer_a")
     private String answerA;

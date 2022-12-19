@@ -10,4 +10,6 @@ import com.yaxing.domain.SingleChoose;
  */
 public interface ISingleChooseService extends IService<SingleChoose> {
     IPage<SingleChoose> selectPageByCondition(int currentPage, int pageSize, SingleChoose singleChoose);
+
+    boolean create(SingleChoose singleChoose);
 }

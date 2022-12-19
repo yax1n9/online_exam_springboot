@@ -5,7 +5,9 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.yaxing.dao.SingleChooseDao;
+import com.yaxing.dao.SubjectDao;
 import com.yaxing.domain.SingleChoose;
+import com.yaxing.domain.Subject;
 import com.yaxing.service.ISingleChooseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +22,8 @@ public class SingleChooseServiceImpl extends ServiceImpl<SingleChooseDao, Single
 
     @Autowired
     private SingleChooseDao singleChooseDao;
+    @Autowired
+    private SubjectDao subjectDao;
 
     @Override
     public IPage<SingleChoose> selectPageByCondition(int currentPage, int pageSize, SingleChoose singleChoose) {
@@ -28,5 +32,12 @@ public class SingleChooseServiceImpl extends ServiceImpl<SingleChooseDao, Single
                 .eq(singleChoose.getSubjectId() != null, SingleChoose::getSubjectId, singleChoose.getSubjectId());
         IPage<SingleChoose> page = new Page<>(currentPage, pageSize);
         return singleChooseDao.selectPage(page, lqm);
+    }
+
+    @Override
+    public boolean create(SingleChoose singleChoose) {
+        Subject subject = subjectDao.selectById(singleChoose.getSubjectId());
+        singleChoose.setSubjectName(subject.getName());
+        return singleChooseDao.insert(singleChoose) > 0;
     }
 }

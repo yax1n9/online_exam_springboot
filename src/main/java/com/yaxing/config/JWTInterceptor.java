@@ -22,9 +22,16 @@ import javax.servlet.http.HttpServletResponse;
 public class JWTInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+        //表示接受任意域名的请求,也可以指定域名
+        response.setHeader("Access-Control-Allow-Origin",
+                request.getHeader("origin"));
+        //该字段可选，是个布尔值，表示是否可以携带cookie
+        response.setHeader("Access-Control-Allow-Credentials", "true");
+        response.setHeader("Access-Control-Allow-Methods", "GET, HEAD, POST, PUT,PATCH, DELETE, OPTIONS");
+        response.setHeader("Access-Control-Allow-Headers", "*");
         Result result = null;
-        // 从 request 的 header 中获得 token 值
         try {
+            // 从 request 的 header 中获得 token 值
             String token = request.getHeader("Authorization").replace("Bearer ", "");
             String path = request.getServletPath();
             DecodedJWT decodedJWT = JWTUtil.verify(token);

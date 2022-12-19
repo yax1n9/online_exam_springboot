@@ -28,5 +28,5 @@ jwt:
 
 # 文件存储路径
 file:
-  path: C:\Projects\IdeaProjects\online_exam_springboot\files\
-#  path: C:\projects\IdeaProjects\online_exam\files\
+  path: C:\projects\IdeaProjects\online_exam\files\
+#  path: C:\Projects\IdeaProjects\online_exam_springboot\files\

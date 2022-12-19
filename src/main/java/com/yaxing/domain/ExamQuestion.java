@@ -21,4 +21,26 @@ public class ExamQuestion {
     @TableLogic
     @TableField("is_delete")
     private int isDelete;
+
+    public ExamQuestion() {
+    }
+
+    public ExamQuestion(Integer examQuestionId, Integer questionId, Integer examId, Integer score, int isDelete) {
+        this.examQuestionId = examQuestionId;
+        this.questionId = questionId;
+        this.examId = examId;
+        this.score = score;
+        this.isDelete = isDelete;
+    }
+
+    public ExamQuestion(Integer questionId, Integer examId, Integer score) {
+        this.questionId = questionId;
+        this.examId = examId;
+        this.score = score;
+    }
+
+    public ExamQuestion(Integer questionId, Integer examId) {
+        this.questionId = questionId;
+        this.examId = examId;
+    }
 }

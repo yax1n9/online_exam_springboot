@@ -1,39 +1,46 @@
 package com.yaxing.controller;
 
+import com.alibaba.druid.support.json.JSONUtils;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.yaxing.controller.utils.Result;
 import com.yaxing.controller.utils.ResultCode;
 import com.yaxing.controller.utils.ResultMessage;
 import com.yaxing.domain.Exam;
+import com.yaxing.domain.ExamQuestion;
+import com.yaxing.dto.ExamInfo;
+import com.yaxing.service.IExamQuestionService;
 import com.yaxing.service.IExamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author yx
  * @date 2022/12/12
  */
-@CrossOrigin
 @RestController
 @RequestMapping("/exams")
 public class ExamController {
 
     @Autowired
     private IExamService examService;
+    @Autowired
+    private IExamQuestionService examQuestionService;
 
     @PostMapping
-    public Result createExam(@RequestBody Exam exam) {
+    public Result createExam(@RequestBody ExamInfo examInfo) {
+        Exam exam = examInfo.getExam();
         boolean save = examService.create(exam);
-        Map<String, Integer> map = new HashMap<>();
-        map.put("examId", exam.getExamId());
+        ArrayList<Integer> questionsIds = examInfo.getQuestionIds();
+        if (save) {
+            for (Integer questionId : questionsIds) {
+                examQuestionService.save(new ExamQuestion(questionId, exam.getExamId()));
+            }
+        }
         return new Result(save ? ResultCode.REQUEST_SUCCESS_CODE : ResultCode.INSERT_FAILED_CODE,
                 save,
-                save ? ResultMessage.INSERT_SUCCESS_MSG : ResultMessage.INSERT_FAILED_MSG,
-                map);
+                save ? ResultMessage.INSERT_SUCCESS_MSG : ResultMessage.INSERT_FAILED_MSG);
     }
 
     @DeleteMapping("/{examId}")

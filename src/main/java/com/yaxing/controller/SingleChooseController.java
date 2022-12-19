@@ -9,7 +9,9 @@ import com.yaxing.service.ISingleChooseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author yx
@@ -24,10 +26,13 @@ public class SingleChooseController {
 
     @PostMapping
     public Result createSingleChoose(@RequestBody SingleChoose singleChoose) {
-        boolean save = singleChooseService.save(singleChoose);
+        boolean save = singleChooseService.create(singleChoose);
+        Map<String, SingleChoose> map = new HashMap<>();
+        map.put("question", singleChoose);
         return new Result(save ? ResultCode.REQUEST_SUCCESS_CODE : ResultCode.INSERT_FAILED_CODE,
                 save,
-                save ? ResultMessage.INSERT_SUCCESS_MSG : ResultMessage.INSERT_FAILED_MSG);
+                save ? ResultMessage.INSERT_SUCCESS_MSG : ResultMessage.INSERT_FAILED_MSG,
+                map);
     }
 
     @DeleteMapping("/{singleChooseId}")
