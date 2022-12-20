@@ -2,6 +2,7 @@ package com.yaxing.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.core.toolkit.support.SFunction;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.yaxing.controller.utils.Result;
@@ -18,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -37,7 +39,8 @@ public class ExamServiceImpl extends ServiceImpl<ExamDao, Exam> implements IExam
         IPage<Exam> page = new Page<>(currentPage, pageSize);
         LambdaQueryWrapper<Exam> lqm = new LambdaQueryWrapper<>();
         lqm.eq(exam.getSubjectId() != null, Exam::getSubjectId, exam.getSubjectId())
-                .like(exam.getTitle() != null, Exam::getTitle, exam.getTitle());
+                .like(exam.getTitle() != null, Exam::getTitle, exam.getTitle())
+                .orderByAsc(Exam::getIsEnd);
         // =0 查所有的考试
         // =1 查进行中的考试
         return examDao.selectPage(page, lqm);
